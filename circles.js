@@ -229,7 +229,7 @@
     },
 
     _precise: function(value) {
-      return Math.round(value * 1000) / 1000;
+      return Math.floor(Math.round(value * 1000)) / 1000;
     },
 
     /*== Public methods ==*/
