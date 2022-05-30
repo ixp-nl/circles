@@ -214,22 +214,22 @@
 
       return [
         'M',
-        this._radius + this._radiusAdjusted * Math.cos(this._startPrecise),
-        this._radius + this._radiusAdjusted * Math.sin(this._startPrecise),
+        this._precise(this._radius + this._radiusAdjusted * Math.cos(this._startPrecise)),
+        this._precise(this._radius + this._radiusAdjusted * Math.sin(this._startPrecise)),
         'A', // arcTo
         this._radiusAdjusted, // x radius
         this._radiusAdjusted, // y radius
         0, // slanting
         longArc, // long or short arc
         1, // clockwise
-        this._radius + this._radiusAdjusted * Math.cos(endAdjusted),
-        this._radius + this._radiusAdjusted * Math.sin(endAdjusted),
+        this._precise(this._radius + this._radiusAdjusted * Math.cos(endAdjusted)),
+        this._precise(this._radius + this._radiusAdjusted * Math.sin(endAdjusted)),
         open ? '' : 'Z' // close
       ].join(' ');
     },
 
     _precise: function(value) {
-      return Math.floor(Math.round(value * 1000)) / 1000;
+      return Math.round(value * 1000) / 1000;
     },
 
     /*== Public methods ==*/
